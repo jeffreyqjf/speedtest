@@ -8,7 +8,8 @@ try:
                 download double,
                 time_ymd varchar(100),
                 time_hms varchar(100),
-                weeks varchar(100)
+                weeks varchar(100),
+                place varchar(100)
                 )''')  # int(20) 和integer区别
     db.commit()
     print("成功创建数据库")
