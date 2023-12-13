@@ -2,7 +2,7 @@ import speedtest
 import sqlite3
 import time
 import requests
-import sys
+
 
 
 "注意要关闭代理，并且确保没有网速占用(如下载资源)"
