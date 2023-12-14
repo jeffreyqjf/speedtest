@@ -1,4 +1,4 @@
-import speedtest
+import speedtest, pywifi
 import sqlite3
 import time
 import requests
@@ -96,6 +96,22 @@ def post_data_to_web(get_speed, get_time, place=place):
     print(response)
 
 
+def get_signal_strength(interface_name='wlan0'):
+    wifi = pywifi.PyWiFi()
+    iface = wifi.interfaces()[0]
+
+    iface.scan()
+    time.sleep(2)
+    scan_results = iface.scan_results()
+
+    for result in scan_results:
+        if result.ssid and result.bssid:
+            # 输出 SSID、BSSID 和信号强度
+            print(f"SSID: {result.ssid}, BSSID: {result.bssid}, 信号强度: {result.signal}")
+
+# 获取信号强度
+get_signal_strength()
+
 if __name__ == "__main__":
     try:
         post_data_old()
@@ -117,4 +133,3 @@ if __name__ == "__main__":
     print("所有进程已经结束，敲回车结束程序")
     end = input()
     exit(0)
-
